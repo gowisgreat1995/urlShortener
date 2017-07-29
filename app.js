@@ -74,9 +74,12 @@ mongo.connect('mongodb://gowisgreat1995:'+process.env.db_password+'@cluster0-sha
         urlShort:rString
     },function(err,data){
         
-        res.send({urlOriginal:gotLink,
+        if(err)
+            {res.send("DATA NOT FOUND!! TRY GETTING AN URL FIRST!");res.end();}
+      
+        else{res.send({urlOriginal:gotLink,
         urlShort:rString});
-        res.end();
+        res.end();}
         
     });
      db.close();
